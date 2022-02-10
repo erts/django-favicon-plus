@@ -1,5 +1,3 @@
-from compat import python_2_unicode_compatible
-
 import sys
 
 from django.db import models
@@ -8,7 +6,7 @@ from django.core.files.storage import default_storage as storage
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 from PIL import Image
-from compat import BytesIO
+from io import BytesIO
 
 config = {
     'shortcut icon': [16, 32, 48, 128, 192],
@@ -24,7 +22,6 @@ def pre_delete_image(sender, instance, **kwargs):
     instance.del_image()
 
 
-@python_2_unicode_compatible
 class Favicon(models.Model):
 
     title = models.CharField(max_length=100)
